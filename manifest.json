@@ -1,0 +1,22 @@
+{
+  "name": "Spam Killer",
+  "version": "0.0.1",
+  "description": "Убивает рекламу на radio.yandex.ru",
+  "permissions": [
+    "*://*.radio.yandex.ru/*"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.radio.yandex.ru/*"
+      ],
+      "js": [
+        "/script.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "manifest_version": 2
+}
