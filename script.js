@@ -22,7 +22,7 @@ window.onload = function(){
 				return;
 			}
 
-			if (target) {
+			if (target && target.title === 'Играть [P]') {
 				target.click();
 				clearInterval(clicker);
 			}
@@ -30,10 +30,11 @@ window.onload = function(){
 	}
 
 	setInterval(function(){
-		var spam = document.querySelector('.slider__item.slider__item_advert.slider__item_shown');
+		var radioSpam = document.querySelector('.slider__item.slider__item_advert.slider__item_shown');
+		var musicSpam = document.querySelector('.audio-advert:not(.audio-advert_hidden)');
 
-		if (spam) {
-			localStorage.setItem('i_have_shit', 'true');
+		if ((radioSpam || musicSpam) && !localStorage.getItem('i_have_shit')) {
+			localStorage.setItem('i_have_shit', '1');
 			window.location = '';
 		}
 	}, 200);
