@@ -17,14 +17,23 @@ window.onload = function(){
 		var clicker = setInterval(function(){
 			var target = document.querySelector('.playable') || document.querySelector('.player-controls__btn_next');
 
-			if (target && target.title === 'Пауза [P]') {
-				clearInterval(clicker);
-				return;
-			}
+			if (location.host === "music.yandex.ru") {
+				var reg = /.+\(Вперёд \[L\]\)/gi;
 
-			if (target && target.title === 'Играть [P]') {
-				target.click();
-				clearInterval(clicker);
+				if (target && reg.test(target.title)) {
+					target.click();
+					clearInterval(clicker);
+				}
+			} else {
+				if (target && target.title === 'Пауза [P]') {
+					clearInterval(clicker);
+					return;
+				}
+
+				if (target && target.title === 'Играть [P]') {
+					target.click();
+					clearInterval(clicker);
+				}
 			}
 		}, 200);
 	}
