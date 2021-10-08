@@ -1,17 +1,17 @@
 {
   "name": "Spam Killer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Убивает рекламу на radio.yandex.ru и на music.yandex.ru",
   "permissions": [
     "*://*.radio.yandex.ru/*",
-	  "*://*.music.yandex.ru/*"
+	"*://*.music.yandex.ru/*"
   ],
 
   "content_scripts": [
     {
       "matches": [
         "*://*.radio.yandex.ru/*",
-	      "*://*.music.yandex.ru/*"
+        "*://*.music.yandex.ru/*"
       ],
       "js": [
         "/script.js"
