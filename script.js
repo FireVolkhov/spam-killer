@@ -12,12 +12,17 @@ window.onload = function(){
 		'}', 0);
 
 	setInterval(() => {
-		const popupButton = document.querySelector('.crackdown-popup.popup.popup_modal .d-button.crackdown-popup__close');
+		const popup = document.querySelector('.crackdown-popup.popup.popup_modal');
 
-		if (popupButton) {
-			popupButton.click();
-			document.querySelector('.d-icon.d-icon_play').click();
-		}
+		if (popup) {
+			const popupIsDisplay = getComputedStyle(popup).display !== 'none';
+
+			if (popupIsDisplay) {
+				const popupButton = document.querySelector('.crackdown-popup.popup.popup_modal .d-button.crackdown-popup__close');
+				popupButton.click();
+				document.querySelector('.d-icon.d-icon_play').click();
+			} // else do nothing
+		} // else do nothing
 	}, 1000);
 
 	// if (localStorage.getItem('i_have_shit')) {
