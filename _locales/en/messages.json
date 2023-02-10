@@ -1,10 +1,10 @@
 {
     "appName": {
       "message": "'Yes' clicker for YouTube Music",
-      "description": "Automatically clicks the 'Yes' button in YouTube Music when playback pauses after a period of user inactivity"
+      "description": ""
     },
     "appDesc": {
-      "message": "Also mutes and skips Ads in a playback. Works as well for music.yandex.ru and radio.yandex.ru",
-      "description": ""
+      "message": "Automatically clicks the 'Yes' button in YouTube Music when playback pauses after a period of user inactivity",
+      "description": "Automatically clicks the 'Yes' button in YouTube Music when playback pauses after a period of user inactivity. Also mutes and skips Ads in a playback. Works as well for music.yandex.ru and radio.yandex.ru"
     }
   }
