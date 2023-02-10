@@ -1,8 +1,9 @@
 {
     "appName": {
-      "message": "Кликер 'Да' для YouTube Music"
+      "message": "Кликер 'Да' для YouTube Music",
+	  "description": "Предотвращает остановку проигрывания треков из-за бездействия юзера на music.youtube.com, radio.yandex.ru и music.yandex.ru"
     },
     "appDesc": {
-      "message": "Предотвращает остановку проигрывания треков из-за бездействия юзера на music.youtube.com, radio.yandex.ru и music.yandex.ru. Также глушит и пропускает рекламу."
+      "message": "Также глушит и пропускает рекламу."
     }
   }
