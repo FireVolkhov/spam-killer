@@ -1,29 +1,21 @@
 window.onload = function(){
 	
-	let musicPlayingState = true;
+	let musicState = true;
 	let popupState = false;
 	let adPlayingState = false;
 	let mutedByUser;
 
 	// Changing state to 'popupState'.
-	// The 'muteButton' should be used as an argument when this function is invoked.
-	function changeStateToPopup(element) {
-		musicPlayingState = false;
+	function changeStateToPopup() {
+		musicState = false;
 		popupState = true;
 		adPlayingState = false;
-		if (isMuted(element)) {
-			mutedByUser = true;
-			// console.log("Has been muted by user");
-		}
-		else {
-			mutedByUser = false;
-		}
 	}
 	
 	// Changing state to 'adPlayingState'. Muting sound if necessary.
 	// The 'muteButton' should be used as an argument when this function is invoked.
 	function changeStateToAdPlaying(element) {
-		musicPlayingState = false;
+		musicState = false;
 		popupState = false;
 		adPlayingState = true;
 		if (isMuted(element)) {
@@ -37,10 +29,10 @@ window.onload = function(){
 		}
 	}
 
-	// Changing state to default 'musicPlayingState'. Unmuting sound if needed.
+	// Changing state from 'adPlayingState' to default 'musicState'. Unmuting sound if needed.
 	// The 'muteButton' should be used as an argument when this function is invoked.
-	function changeStateToMusicPlaying(element) {
-		musicPlayingState = true;
+	function changeStateFromAdvertToMusic(element) {
+		musicState = true;
 		popupState = false;
 		adPlayingState = false;		
 		if (isMuted(element)) {
@@ -53,6 +45,17 @@ window.onload = function(){
 				// console.log("Unmuted at " +Date.now());
 			}
 		}
+	}
+
+	// Changing state from 'popupState' to default 'musicState'
+	function changeStateFromPopupToMusic() {
+		musicState = true;
+		popupState = false;
+		adPlayingState = false;
+						
+		// This function clicks Play button (if playback is stopped by Popup):
+		// document.getElementById('play-pause-button').click(); 
+
 	}
 
 	// Checking if the sound is muted.
@@ -84,9 +87,9 @@ window.onload = function(){
 		const advert = document.querySelector('.ytp-ad-player-overlay');
 
 		// Default state, checking for popup or advert
-		if (musicPlayingState) {
+		if (musicState) {
 			if (isHere(popup)) {
-				changeStateToPopup(muteButton);
+				changeStateToPopup();
 				// console.log("Changed to Popup State " +Date.now());
 			}
 			else if (isHere(advert)) {
@@ -100,13 +103,10 @@ window.onload = function(){
 			if (isHere(popup)) {
 				const popupButton = popup.querySelector('[aria-label="Yes"]');
 				popupButton.click();
-				
-				// This function clicks Play button if playback was stopped by Popup.
-				// document.getElementById('play-pause-button').click(); 
-
 				// console.log("'Yes' button clicked at " +Date.now());
-				changeStateToMusicPlaying();
-				// console.log("Changed to MusicPlaying " +Date.now());
+
+				changeStateFromPopupToMusic();
+				// console.log("Changed to Music State " +Date.now());
 			}
 		}
 
@@ -117,13 +117,14 @@ window.onload = function(){
 				if (skipButton) {
 					skipButton.click();
 					// console.log("Ad skipped at " +Date.now());
-					changeStateToMusicPlaying(muteButton);
-					// console.log("Changed to MusicPlaying State " +Date.now());
+
+					changeStateFromAdvertToMusic(muteButton);
+					// console.log("Changed to Music State " +Date.now());
 				}
 			}
 			else {
-				changeStateToMusicPlaying(muteButton);
-				// console.log("Changed to MusicPlaying State " +Date.now());
+				changeStateFromAdvertToMusic(muteButton);
+				// console.log("Changed to Music State " +Date.now());
 			}
 		}
 
