@@ -26,7 +26,7 @@
         "*://*.music.yandex.ru/*"
       ],
       "js": [
-        "/script.js"
+        "/script-yandex.js"
       ],
       "run_at": "document_end",
       "all_frames": false
