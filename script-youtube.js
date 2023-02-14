@@ -86,11 +86,19 @@ window.onload = function(){
 		const popup = document.querySelector('.actions.style-scope.ytmusic-you-there-renderer');
 		const advert = document.querySelector('.ytp-ad-player-overlay');
 
+
 		// Default state, checking for popup or advert
 		if (musicState) {
 			if (isHere(popup)) {
-				changeStateToPopup();
-				// console.log("Changed to Popup State " +Date.now());
+				const upperContainer = popup.closest('tp-yt-paper-dialog');
+				if (isHere(upperContainer)) {
+					changeStateToPopup();
+					// console.log("Changed to Popup State " +Date.now());
+				}
+				else if (isHere(advert)) {
+					changeStateToAdPlaying(muteButton);	
+					// console.log("Changed to AdPlaying State " +Date.now());	
+				}
 			}
 			else if (isHere(advert)) {
 				changeStateToAdPlaying(muteButton);	
@@ -100,8 +108,8 @@ window.onload = function(){
 
 		// Closing pop-up element and continuing to music.
 		else if (popupState) {
-			if (isHere(popup)) {
-				const popupButton = popup.querySelector('[aria-label="Yes"]');
+			const popupButton = popup.querySelector('[aria-label="Yes"]');
+			if (popupButton) {
 				popupButton.click();
 				// console.log("'Yes' button clicked at " +Date.now());
 
@@ -119,12 +127,12 @@ window.onload = function(){
 					// console.log("Ad skipped at " +Date.now());
 
 					changeStateFromAdvertToMusic(muteButton);
-					// console.log("Changed to Music State " +Date.now());
+					// console.log("Back to Music State " +Date.now());
 				}
 			}
 			else {
 				changeStateFromAdvertToMusic(muteButton);
-				// console.log("Changed to Music State " +Date.now());
+				// console.log("Back to Music State " +Date.now());
 			}
 		}
 
