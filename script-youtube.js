@@ -80,11 +80,11 @@ window.onload = function(){
 	}
 
 
+
 	setInterval(() => {
 		const muteButton = document.querySelector('.volume.style-scope.ytmusic-player-bar');
 		const popup = document.querySelector('.actions.style-scope.ytmusic-you-there-renderer');
 		const upperContainer = popup.closest('tp-yt-paper-dialog');
-		// const popupButton = popup.querySelector('[aria-label="Yes"]');
 		const advert = document.querySelector('.ytp-ad-player-overlay');
 
 		// Default state, checking for popup or advert
@@ -93,6 +93,10 @@ window.onload = function(){
 				if (isHere(upperContainer)) {
 					changeStateToPopup();
 					// console.log("Changed to Popup State " +Date.now());
+				}
+				else if (isHere(advert)) {
+					changeStateToAdPlaying(muteButton);	
+					// console.log("Changed to AdPlaying State " +Date.now());	
 				}
 			}
 			else if (isHere(advert)) {
