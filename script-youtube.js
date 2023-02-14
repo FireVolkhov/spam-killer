@@ -84,12 +84,13 @@ window.onload = function(){
 	setInterval(() => {
 		const muteButton = document.querySelector('.volume.style-scope.ytmusic-player-bar');
 		const popup = document.querySelector('.actions.style-scope.ytmusic-you-there-renderer');
-		const upperContainer = popup.closest('tp-yt-paper-dialog');
 		const advert = document.querySelector('.ytp-ad-player-overlay');
+
 
 		// Default state, checking for popup or advert
 		if (musicState) {
 			if (isHere(popup)) {
+				const upperContainer = popup.closest('tp-yt-paper-dialog');
 				if (isHere(upperContainer)) {
 					changeStateToPopup();
 					// console.log("Changed to Popup State " +Date.now());
